@@ -4,7 +4,7 @@ A simple yet useful Wireshark Lua dissector for the EAP-5G protocol (Ref. 3GPP T
 
 ## Overview
 
-EAP-5G, defined in [3GPP TS 24.502](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3371), is an EAP-Expanded (Vendor-ID 10415, Vendor-Type 3) protocol used by the UE and N3IWF/TNGF to exchange control information in the 5G Non-3GPP Access. Wireshark ships no native dissector for it, so EAP-5G packets normally show up only as generic EAP-Expanded data. This dissector decodes the EAP-5G header and AN-Parameters, delegating the embedded NAS-PDU to Wireshark's built-in dissector for full 5G NAS decoding.
+EAP-5G, defined in [3GPP TS 24.502](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3371), is an EAP-Expanded (Vendor-ID 10415, Vendor-Type 3) protocol used by the UE and N3IWF/TNGF to exchange control information in the 5G Non-3GPP Access. Wireshark ships no native dissector for it, so EAP-5G packets normally show up only as generic EAP-Expanded data (see [screenshot folder](screenshots)). This dissector decodes the EAP-5G header and AN-Parameters, delegating the embedded NAS-PDU to Wireshark's built-in dissector for full 5G NAS decoding.
 
 ## Features
 

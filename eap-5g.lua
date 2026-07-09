@@ -61,11 +61,13 @@ function proto.dissector(tvb, pinfo, tree)
     
     if (message_id == 1 and eap_code().value == 1) then
         -- EAP-Request 5G-Start
+		pinfo.cols.info = "EAP-5G Request, 5G-Start"
 		tree:add_le("Message-ID: 5G-Start (1)")
         tree:add_le("Spare: " .. spare)
     
     elseif (message_id == 2 and eap_code().value == 1) then
 		-- EAP-Request 5G-NAS
+		pinfo.cols.info = "EAP-5G Request, 5G-Start"
 		tree:add_le("Message-ID: 5G-NAS (2)")
         tree:add_le("Spare: " .. spare)
         tree:add_le("NAS-PDU Length: " .. eap_ext_data().range:range(2,2):uint())
@@ -73,6 +75,7 @@ function proto.dissector(tvb, pinfo, tree)
     
     elseif (message_id == 2 and eap_code().value == 2) then
         -- EAP-Response 5G-NAS
+		pinfo.cols.info = "EAP-5G Response, NAS-5GS"
         tree:add_le("Message-ID: 5G-NAS (2)")
         tree:add_le("Spare: " .. spare)
 		local an_length = eap_ext_data().range:range(2,2):uint()
@@ -167,6 +170,7 @@ function proto.dissector(tvb, pinfo, tree)
     
     elseif (message_id == 3 and eap_code().value == 1) then
     	-- EAP-Request 5G-Notification
+		pinfo.cols.info = "EAP-5G Request, 5G-Notification"
 		tree:add_le("Message-ID: 5G-Notification (3)")
         tree:add_le("Spare: " .. spare)
         local an_length = eap_ext_data().range:range(2,2):uint()
@@ -206,11 +210,13 @@ function proto.dissector(tvb, pinfo, tree)
       
     elseif (message_id == 3 and eap_code().value == 2) then
     	-- EAP-Response 5G-Notification
+		pinfo.cols.info = "EAP-5G Response, 5G-Notification"
 		tree:add_le("Message-ID: 5G-Notification (3)")
 		tree:add_le("Spare: " .. spare)
     
     elseif (message_id == 4 and eap_code().value == 1) then
 		-- EAP-Request 5G-Stop
+		pinfo.cols.info = "EAP-5G Request, 5G-Stop"
 		tree:add_le("Message-ID: 5G-Stop (4)")
 		tree:add_le("Spare: " .. spare)
     

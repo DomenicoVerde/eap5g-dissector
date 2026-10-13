@@ -15,7 +15,7 @@ function is_eap_5g(tvb, pinfo)
 	-- Check if Protocol is EAP-Expanded Type (254) 
 	if (eap_type() == nil or eap_type().value ~= 254) then 
 		if (eap_type() ~= nil) then
-        	print("[DEBUG] EAP Type: " .. eap_type())
+			print("[DEBUG] EAP Type: " .. eap_type().value)
         end
 		return false
     end
@@ -23,7 +23,7 @@ function is_eap_5g(tvb, pinfo)
     -- Check if Vendor-ID is 3GPP (10415 - IANA SMI Private Enterprise Code Registry)
     if (eap_vendor_id() == nil or eap_vendor_id().value ~= 10415) then
     	if (eap_vendor_id() ~= nil) then
-        	print("[DEBUG] EAP-Ext Vendor ID: " .. eap_vendor_id())
+			print("[DEBUG] EAP-Ext Vendor ID: " .. eap_vendor_id().value)
         end
 		return false
     end
@@ -31,7 +31,7 @@ function is_eap_5g(tvb, pinfo)
     -- Check if is EAP-5G (3 - Ref. TS 33.402)
     if (eap_vendor_type() == nil or eap_vendor_type().value ~= 3) then
         if (eap_vendor_type() ~= nil) then
-        	print("[DEBUG] EAP-Ext Vendor Type: " .. eap_vendor_type())
+			print("[DEBUG] EAP-Ext Vendor Type: " .. eap_vendor_type().value)
         end
 		return false
     end 
